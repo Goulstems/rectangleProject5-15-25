@@ -2,13 +2,14 @@ import pygame
 from Rectangle import Rectangle
 from Mob import Mob
 from Player import Player
+from Enemy import Enemy
 #===========================================================
 
 # [Initialize Pygame]
 pygame.init() 
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Hello Pygame")
-clock = pygame.time.Clock()
+clock = pygame.time.Clock() #consider using another clockbase for exploint preventation
 running = True
 
 playerPos = {"x":50,"y":50}
@@ -32,8 +33,22 @@ def collisionDetect():
 #===========================================================
 
     # [Initialize players]
-player1 = Player(screen)
-enemy = Mob([250,50],(255,0,0),screen)
+player1 = Player([50,50],[50,50],screen)
+enemy = Enemy([250,50],[100,50],.25,screen)
+
+#__________________________________________
+#TASK1: SPAWN 4 ENEMIES 
+    #   > PACK AN `enemies` List!
+
+    # IN THE GAME LOOP, MOVE THEM ALL!
+
+#TASK2: ADD SIZE SUPPORT FOR THE `Enemy` CLASS!
+    #   > SPAWN ENEMIES OF VARIOUS SIZES!
+
+#TASK3: ADD SPEED SUPPORT FOR THE `Enemy`/`Mob`/`Player` CLASS!
+    #   > MOVE MOBS BASED ON THEIR `speed` properties!
+
+#__________________________________________
 
 # Game loop
 while running:
@@ -42,7 +57,7 @@ while running:
             running = False
     # - - - - - - - -  -
     screen.fill((0,0,0))
-    player1.Move(0,0)
+    player1.Move(0,0) #TODO: render handler
     enemy.Move(-1,0)
     collisionDetect()       #detect collissions / damaging TODO: Debounce
     #- - - - - - - - - -

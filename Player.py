@@ -1,10 +1,12 @@
 from Mob import Mob
 
 class Player(Mob):
-    def __init__(self,screen):
+    def __init__(self,pos,size,screen):
         super().__init__(
-            [50,50],
+            pos,
+            size,
             [0,0,255],
+            1,
             screen
         )
     
